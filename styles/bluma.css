@@ -1,0 +1,57 @@
+.bluma-divider {
+    margin-right:;
+    margin-bottom:;
+    margin-left:;
+    margin-top: 1rem;
+    opacity: 0;
+    border-top: 1px solid var(--divider-color);
+}
+
+.bluma-guest-list {
+    margin-top: 0px;
+    margin-right: -1.25rem;
+    margin-left: -1.25rem;
+    margin-bottom: calc(-1 * var(--modal-vertical-padding));
+    padding-top: 0px;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+    padding-bottom: var(--modal-vertical-padding);
+    gap: 0.9rem;
+    max-height: 45vh;
+}
+
+.bluma-avatar-wrapper {
+    display: flex;
+}
+
+.bluma-social-links {
+    margin-left: -0.375rem;
+    margin-right: -0.375rem;
+}
+
+.bluma-social-link a {
+    color: var(--tertiary-color-alpha);
+    padding: 0.375rem;
+    display: block;
+}
+
+.bluma-favorited-guest-checkbox {
+    display: none;
+}
+
+.bluma-favorited-guest-checkbox:checked ~ .unchecked {
+    display: none;
+}
+
+.bluma-favorited-guest-checkbox:not(:checked) ~ .checked {
+    display: none;
+}
+
+.lux-modal.lux-alert {
+    width: 500px !important;
+}
+
+.bluma-desc {
+    color: var(--tertiary-color-alpha);
+    font-size: var(--font-size-sm);
+}
