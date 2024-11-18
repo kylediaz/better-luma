@@ -110,7 +110,11 @@ async function getGuestList() {
           } else if (!a.bluma.favorited && b.bluma.favorited) {
             return 1;
           } else {
-            return a.name.localeCompare(b.name);
+            if (a.name) {
+              return a.name.localeCompare(b.name);
+            } else {
+              return 1;
+            }
           }
         });
         resolve(updatedGuestList);
