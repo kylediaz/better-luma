@@ -11,7 +11,7 @@ function toCSV(guests) {
   for (const guest of guests) {
     const row = [
       guest.name,
-      guest.bio_short || "",
+      (guest.bio_short || "").replace(/\r?\n|\r/g, ""),
       guest.instagram_handle || "",
       guest.linkedin_handle || "",
       guest.tiktok_handle || "",
@@ -213,6 +213,15 @@ function createGuestSocialLinks(guest) {
       <div class="jsx-1428039309 social-link bluma-social-link regular">
         <a href="https://x.com/${guest["twitter_handle"]}" class="lux-menu-trigger-wrapper" target="_blank" rel="nofollow noopener">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" class="jsx-2703338562"><path fill="currentColor" d="m108.783 107.652-38.24-55.748.066.053L105.087 12H93.565L65.478 44.522 43.174 12H12.957l35.7 52.048-.005-.005L11 107.653h11.522L53.748 71.47l24.817 36.182zM38.609 20.696l53.652 78.26h-9.13l-53.696-78.26z"></path></svg>
+        </a>
+      </div>`;
+    links.push(createElementFromHTML(newLink));
+  }
+  if (guest["linkedin_handle"]) {
+    let newLink = `
+      <div class="jsx-1428039309 social-link bluma-social-link regular">
+        <a href="https://linkedin.com${guest["linkedin_handle"]}" class="lux-menu-trigger-wrapper" target="_blank" rel="nofollow noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" class="jsx-2703338562"><path fill="currentColor" d="M13.667 1.333H2.333a1 1 0 0 0-1 1v11.334a1 1 0 0 0 1 1h11.334a1 1 0 0 0 1-1V2.333a1 1 0 0 0-1-1M5.333 12.667h-2v-6h2zm-1-7.167a1.167 1.167 0 1 1 1.2-1.167 1.187 1.187 0 0 1-1.2 1.167m8.334 7.167h-2v-3.16c0-.947-.4-1.287-.92-1.287a1.16 1.16 0 0 0-1.08 1.24.4.4 0 0 0 0 .093v3.114h-2v-6H8.6v.866a2.07 2.07 0 0 1 1.8-.933c1.033 0 2.24.573 2.24 2.44z"></path></svg>
         </a>
       </div>`;
     links.push(createElementFromHTML(newLink));
