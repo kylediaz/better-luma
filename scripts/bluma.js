@@ -5,24 +5,31 @@ function createElementFromHTML(htmlString) {
 }
 function toCSV(guests) {
   const headers =
-    "name,bio_short,instagram_handle,linkedin_handle,tiktok_handle,website,youtube_handle";
+    "Name,Headline,Website,Instagram URL,LinkedIn URL,TikTok URL,Twitter URL,YouTube URL";
   const csvRows = [headers]; // start with the headers
 
   for (const guest of guests) {
     const row = [
       guest.name,
       (guest.bio_short || "").replace(/\r?\n|\r/g, ""),
-      guest.instagram_handle || "",
-      guest.linkedin_handle || "",
-      guest.tiktok_handle || "",
       guest.website || "",
-      guest.youtube_handle || "",
+      toURL("https://instagram.com/", guest.instagram_handle),
+      toURL("https://linkedin.com/in/", guest.linkedin_handle),
+      toURL("https://tiktok.com/", guest.tiktok_handle),
+      toURL("https://x.com/", guest.twitter_handle),
+      toURL("https://youtube.com/", guest.youtube_handle),
     ].map((field) => `"${field.replace(/"/g, '""')}"`); // escape quotes
 
     csvRows.push(row.join(","));
   }
 
   return csvRows.join("\n");
+}
+function toURL(prefix, handle) {
+  if (handle) {
+    return `${prefix}${handle}`;
+  }
+  return "";
 }
 async function copyToClipboard(text) {
   return new Promise((resolve, reject) => {
